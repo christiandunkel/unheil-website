@@ -1,0 +1,15 @@
+{
+	"name": "unheil-website",
+	"version": "1.0.0",
+	"private": true,
+	"main": "build/build.js",
+	"engines": {
+		"node": "20.11.0"
+	},
+	"os": [
+		"win32"
+	],
+	"dependencies": {
+
+	}
+}
