@@ -64,7 +64,7 @@ const buildPage = async() => {
 		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,user-scalable=1.0,minimum-scale=1.0" />
 		<title>${encoded_title}</title>
 		<link rel="preload" href="public/font/libre-franklin-normal.woff2" as="font" type="font/woff2" crossorigin="">
-		<link rel="preload" href="public/fontlibre-franklin-semi-bold.woff2" as="font" type="font/woff2" crossorigin="">
+		<link rel="preload" href="public/font/libre-franklin-semi-bold.woff2" as="font" type="font/woff2" crossorigin="">
 		<link rel="stylesheet" href="public/app.css" />
 		<link rel="canonical" href="${encoded_url}" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
