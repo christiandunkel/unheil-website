@@ -19,6 +19,61 @@
 	font-display: optional;
 }
 
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+
+	// disable all animations and transitions if users wants reduced motion
+	// https://github.com/jensimmons/cssremedy/issues/11
+	@media (prefers-reduced-motion) {
+		// setting the duration to 0 would cause the animation to be skipped in some browsers (e.g. Safari)
+		animation-duration: 1ms !important;
+		animation-delay: -1ms !important;
+		// prevent infinite animations running very fast forever
+		// - https://css-tricks.com/revisiting-prefers-reduced-motion/#comment-1700170
+		animation-iteration-count: 1 !important;
+		// apparently, 0 duration transitions always work as expected, even in Safari
+		// (also, if this were 1ms instead, it would cause some problems in IE 11 and possibly other older browsers, by animating newly applied styles long enough, so that getComputedStyle() called in the same tick returns the initial value instead of the newly applied style value)
+		transition-duration: 0ms !important;
+		transition-delay: 0ms !important;
+	}
+}
+
 html {
+	// prevent resizing text to fit
+	-ms-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	// safari: prevent callout to copy image, etc when tap hold on Safari
+	-webkit-touch-callout: none;
+	// prevent tap highlight color / shadow
+	-webkit-tap-highlight-color: transparent;
+	// smoother appearance of fonts
+	-moz-osx-font-smoothing: auto;
+	-webkit-font-smoothing: subpixel-antialiased;
+	font-smooth: always;
+	// prevent instant scroll, enable smooth movement
+	scroll-behavior: smooth;
+	direction: ltr;
+
+	min-height: 100%;
+	background-color: #010102;
 	font-family: 'Libre Franklin', Arial, sans-serif;
+	font-size: 10px;
+
+	@media (min-width: 701px) and (max-width: 1000px) {
+		font-size: 9px;
+	}
+
+	@media (max-width: 700px) {
+		font-size: 8px;
+	}
+}
+
+body {
+	position: relative;
+	margin: 0;
+	overflow-x: hidden;
+	font-size: 0; line-height: 1;
 }

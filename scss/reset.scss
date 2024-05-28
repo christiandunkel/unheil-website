@@ -1,0 +1,24 @@
+div, span, h1, h2, h3, p, pre, a, del, img, ins, small, strike, strong, b, u, i, center, ol, ul, li, form, label, table, caption, tbody, tfoot, thead, tr, th, td, figure, figcaption, header, main, footer, menu, nav, input {
+	vertical-align: baseline;
+	margin: 0; padding: 0;
+	border: 0;
+	font-family: inherit; font-weight: inherit; font-size: 100%;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, picture, section {
+	display: block;
+}
+
+button {
+	appearance: none;
+	width: auto; margin: 0; padding: 0;
+	background: transparent; border: none; overflow: visible;
+	color: inherit; font-family: inherit; font-weight: inherit; font-size: 100%; line-height: normal; text-transform: inherit;
+	user-select: none;
+	cursor: pointer;
+
+	&::-moz-focus-inner {
+		padding: 0;
+		border: 0;
+	}
+}
