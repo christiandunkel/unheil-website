@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // https://fonts.google.com/specimen/Libre+Franklin?preview.text=Drupal&preview.text_type=custom&query=libre+franklin&selection.family=Libre+Franklin:ital,wght@0,400;0,600;1,400&sidebar.open=true
 @font-face {
 	font-family: 'Libre Franklin';
@@ -76,4 +78,17 @@ body {
 	margin: 0;
 	overflow-x: hidden;
 	font-size: 0; line-height: 1;
+}
+
+:focus {
+	$width: 3px;
+
+	outline: 3px solid white;
+	outline-offset: -1px;
+
+	// remove the focus styles if the element was targetted by a pointer for example
+	//  https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+	&:not(:focus-visible) {
+		outline: none;
+	}
 }
