@@ -3,6 +3,10 @@ const _ = {
 };
 
 (async() => {
+
 	console.log('Building CSS');
-	_.scss_compiler.build();
+	require('./scss-compiler.js').build();
+
+	console.log('Building HTML');
+	await require('./html-builder.js').build();
 })();

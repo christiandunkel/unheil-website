@@ -7,5 +7,5 @@
 
 **Making Changes**
 1. Modify your data and image files.
-2. Execute [`build/build.bat`](build/build.bat) to build all static files.
+2. Execute [`build.bat`](build.bat) to build all static files.
 3. Commit all changes (changed source files and generated static files) to the repository.

@@ -10,6 +10,7 @@
 		"win32"
 	],
 	"dependencies": {
+		"html-minifier-terser": "7.2.0",
 		"sass": "1.77.2"
 	}
 }
