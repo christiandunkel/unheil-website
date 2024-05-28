@@ -1,0 +1,10 @@
+.test-element {
+	color: red;
+}
+.test-element2 {
+	color: blue;
+	
+	&--test {
+		color: green;
+	}
+}
