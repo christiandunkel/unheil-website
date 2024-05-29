@@ -9,22 +9,32 @@
 
 	&__button {
 		contain: content;
-		display: inline-flex;
-		align-items: center;
-		height: 100%; margin: 0 .4rem; padding: 0 1.2rem;
-		white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
-		color: white; font-size: 2.5rem; line-height: 1; font-weight: bold; text-align: left; text-decoration: none;
-		user-select: none; cursor: pointer;
+		display: inline-block;
+		overflow: hidden;
 
-		&:not([disabled]):hover {
+		&:not([disabled]):hover > &__inner {
 			text-decoration: underline;
 			text-decoration-thickness: .1em;
 			text-underline-offset: .2em;
 		}
 
-		@media (max-width: 500px) {
-			padding: 0 .7rem;
-			font-size: 1.9rem;
+		&:not([disabled]):active > &__inner {
+			transform: scale(.92);
+		}
+
+		&__inner {
+			display: flex;
+			align-items: center;
+			height: 100%; margin: 0 .4rem; padding: 0 1.2rem;
+			white-space: nowrap; text-overflow: ellipsis;
+			color: white; font-size: 2.5rem; line-height: 1; font-weight: bold; text-align: left; text-decoration: none;
+			user-select: none; cursor: pointer;
+			transition: transform .1s;
+
+			@media (max-width: 500px) {
+				padding: 0 .7rem;
+				font-size: 1.9rem;
+			}
 		}
 	}
 }

@@ -144,10 +144,18 @@ const buildPage = async() => {
 	</head>
 	<body>
 		<nav class="navigation">
-			<button class="navigation__button" data-scroll-to="home">home</button>
-			<button class="navigation__button" data-scroll-to="events">events</button>
-			<button class="navigation__button" data-scroll-to="gallery">gallery</button>
-			<button class="navigation__button" data-scroll-to="about">about</button>
+			<button class="navigation__button" data-scroll-to="home">
+				<span class="navigation__button__inner">home</span>
+			</button>
+			<button class="navigation__button" data-scroll-to="events">
+				<span class="navigation__button__inner">events</span>
+			</button>
+			<button class="navigation__button" data-scroll-to="gallery">
+				<span class="navigation__button__inner">gallery</span>
+			</button>
+			<button class="navigation__button" data-scroll-to="about">
+				<span class="navigation__button__inner">about</span>
+			</button>
 		</nav>
 		<div id="home" class="home">
 			<div class="home__box">
