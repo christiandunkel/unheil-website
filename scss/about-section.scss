@@ -1,12 +1,14 @@
+@use 'globals';
+
 .about {
 	contain: content;
 	display: flex;
 	align-items: center; justify-content: center;
-	min-height: 100vh;
+	min-height: calc(100vh - globals.$navigation-height); padding: 6rem 1.5rem 6rem 1.5rem;
 	overflow: hidden;
 
 	&__logo {
-		max-width: 900px; width: 90%; padding: 12rem 2rem 5rem 2rem;
+		max-width: 80rem; width: 100%;
 		user-select: none; pointer-events: none;
 
 		&__img {

@@ -125,7 +125,7 @@ const buildPage = async() => {
 			<picture class="about__logo">
 				<source srcset="public/image/logo-small.webp" type="image/webp" media="(max-width: 400px)">
 				<img class="about__logo__img" src="public/image/logo-normal.webp" alt="Unheil Logo" fetchpriority="high">
-			</div>
+			</picture>
 		</div>
 	</body>
 </html>
