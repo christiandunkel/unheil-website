@@ -1,0 +1,17 @@
+@use 'globals';
+
+.about {
+	display: flex;
+	flex-direction: column; align-items: center; justify-content: center;
+	min-height: 100vh; padding: globals.$navigation-height 2rem;
+
+	&__heading {
+		color: white; font-size: 7rem; line-height: 1.3; font-weight: bold;
+	}
+
+	&__description {
+		max-width: 70rem; margin: 2rem 0;
+		color: #fff; font-size: 2.2rem; line-height: 1.3;
+		text-align: center; text-wrap: balance;
+	}
+}

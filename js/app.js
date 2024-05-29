@@ -6,7 +6,6 @@
 	const initializeNavigationButtons = () => {
 		const attribute = 'data-scroll-to';
 		const buttons = document.querySelectorAll(`[${attribute}]`);
-		const offset = 120;
 		for (let i = 0, len = buttons.length; i < len; i++) {
 			const button = buttons[i];
 			let target;
@@ -20,10 +19,10 @@
 				}
 				setTimeout(() => {
 					const element_y = Math.round(target.getBoundingClientRect().top);
-					const scroll_y = Math.max(0, element_y - offset + window.scrollY);
+					const scroll_y = element_y + window.scrollY;
 
 					// force focus on the section that comes into view
-					// must be called before the scroll is run, as otherwise the offset won't work properly in some cases, e.g., if the user is at top of page and clicks to scroll to a lower element
+					// should be called before the scroll is run, as otherwise the scroll is laggy and sometimes slightly off in position
 					const onBlur = () => {
 						target.removeEventListener('blur', onBlur);
 						target.removeAttribute('tabindex');

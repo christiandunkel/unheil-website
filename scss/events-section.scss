@@ -5,7 +5,7 @@
 
 	display: flex;
 	flex-direction: column; align-items: center; justify-content: center;
-	min-height: calc(100vh - globals.$navigation-height); margin-top: globals.$navigation-height; padding: 0 2rem;
+	min-height: 100vh; padding: globals.$navigation-height 2rem 0 2rem;
 
 	&__heading {
 		color: white; font-size: 7rem; line-height: 1.3; font-weight: bold;
