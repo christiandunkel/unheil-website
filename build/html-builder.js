@@ -130,6 +130,7 @@ const buildPage = async() => {
 			<h1 class="home__heading">Unheil</h1>
 			<p class="home__tagline">Atmospheric / Depressive Black Metal from Germany</p>
 		</div>
+		<script src="public/app.js" defer></script>
 	</body>
 </html>
 	

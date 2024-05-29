@@ -1,0 +1,1 @@
+!(function(){var o=Math.random();console.log("Test","abcdef"),window.test2=o})();

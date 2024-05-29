@@ -7,6 +7,9 @@ const _ = {
 	console.log('Building CSS');
 	require('./scss-compiler.js').build();
 
+	console.log('Building JS');
+	require('./js-compiler.js').build();
+
 	console.log('Building HTML');
 	await require('./html-builder.js').build();
 })();
