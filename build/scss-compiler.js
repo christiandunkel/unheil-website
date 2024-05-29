@@ -10,7 +10,8 @@ const _ = {
 const buildCss = () => {
 	const root = _.path.join(__dirname, '..');
 	const file_path = _.path.join(root, 'scss', 'app.scss');
-	let result, error;
+	let result;
+	let error;
 
 	try {
 		// options: https://sass-lang.com/documentation/js-api/interfaces/Options
