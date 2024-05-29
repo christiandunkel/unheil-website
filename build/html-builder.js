@@ -123,12 +123,14 @@ const buildPage = async() => {
 			<button class="navigation__button" data-scroll-to="about">about</button>
 		</nav>
 		<div id="home" class="home">
-			<picture class="home__logo">
-				<source srcset="public/image/logo-small.webp" type="image/webp" media="(max-width: 400px)">
-				<img class="home__logo__img" src="public/image/logo-normal.webp" alt="Unheil Logo" fetchpriority="high">
-			</picture>
-			<h1 class="home__heading">Unheil</h1>
-			<p class="home__tagline">Atmospheric / Depressive Black Metal from Germany</p>
+			<div class="home__box">
+				<picture class="home__box__logo">
+					<source srcset="public/image/logo-small.webp" type="image/webp" media="(max-width: 400px)">
+					<img class="home__box__logo__img" src="public/image/logo-normal.webp" alt="Unheil Logo" fetchpriority="high">
+				</picture>
+				<h1 class="home__box__heading">Unheil</h1>
+				<p class="home__box__tagline">Atmospheric / Depressive Black Metal from Germany</p>
+			</div>
 		</div>
 		<div id="events" class="events" style="min-height: 500px"></div>
 		<div id="gallery" class="gallery" style="min-height: 500px"></div>

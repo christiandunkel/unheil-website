@@ -1,0 +1,13 @@
+@keyframes fade-in-from-top {
+	0% {
+		opacity: 0;
+		transform: translateY(-2rem);
+	}
+}
+
+@keyframes hidden {
+	0%, 100% {
+		opacity: 0;
+		pointer-events: none;
+	}
+}
