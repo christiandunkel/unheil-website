@@ -19,8 +19,6 @@
 					target ||= document.querySelector(`#${target_id}`);
 				}
 				setTimeout(() => {
-
-					// scroll section into view
 					const element_y = Math.round(target.getBoundingClientRect().top);
 					const scroll_y = Math.max(0, element_y - offset + window.scrollY);
 					if ('scrollBehavior' in document.body.style) {
@@ -32,16 +30,6 @@
 					else {
 						scrollTo(0, scroll_y);
 					}
-					
-					// force focus on the section that comes into view
-					const onBlur = () => {
-						target.removeEventListener('blur', onBlur);
-						target.removeAttribute('tabindex');
-					};
-					target.addEventListener('blur', onBlur);
-					target.tabIndex = 0;
-					target.focus();
-
 					is_running = false;
 				}, 90);
 			});
