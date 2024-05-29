@@ -9,7 +9,8 @@ const _ = {
 
 const WEBSITE_TITLE = 'Unheil\'s Official Website';
 const DESCRIPTION = 'Atmospheric / Depressive Black Metal made in Germany'
-const DOMAIN = 'unheil-something.com';
+// URL of the final website
+const DOMAIN = 'example.com';
 const SITE_NAME = 'Unheil';
 const LOCALE = 'en_US';
 
@@ -91,6 +92,9 @@ const buildPage = async() => {
 	const encoded_description = encodeHtml(DESCRIPTION);
 	const encoded_url = `https://${encodeHtml(DOMAIN)}`;
 	const encoded_site_name = encodeHtml(SITE_NAME);
+	const preview_image = `${encoded_url}/public/image/preview.webp`;
+	const preview_image_width = 1200;
+	const preview_image_height = 630;
 	const cache_invalidator = Math.floor(Math.random() * 10000000000).toString(36);
 
 	const html = `
@@ -114,6 +118,11 @@ const buildPage = async() => {
 		<meta property="og:title" content="${encoded_title}" />
 		<meta property="og:site_name" content="${encoded_site_name}" />
 		<meta property="og:locale" content="${LOCALE}" />
+		<meta name="thumbnail" content="${preview_image}" />
+		<meta property="og:image" content="${preview_image}" />
+		<meta property="og:image:width" content="${preview_image_width}" />
+		<meta property="og:image:height" content="${preview_image_height}" />
+		<meta property="og:type" content="image/webp" />
 		<script type="application/ld+json">
 		${JSON.stringify(
 			{
@@ -140,6 +149,15 @@ const buildPage = async() => {
 					copyrightHolder: {
 						'@id': `${encoded_url}#band`
 					}
+				},
+				primaryImageOfPage: {
+					'@type': 'ImageObject',
+					'@id': `${encoded_url}/#primaryimage`,
+					inLanguage: LOCALE,
+					url: preview_image,
+					contentUrl: preview_image,
+					width: preview_image_width,
+					height: preview_image_height
 				}
 			}
 		)}
