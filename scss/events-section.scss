@@ -1,12 +1,24 @@
 @use 'globals';
 
 .events {
+	$max-width: 800px;
+
 	display: flex;
 	flex-direction: column; align-items: center; justify-content: center;
-	min-height: calc(100vh - globals.$navigation-height); margin-top: globals.$navigation-height;
+	min-height: calc(100vh - globals.$navigation-height); margin-top: globals.$navigation-height; padding: 0 2rem;
+
+	&__image {
+		max-width: $max-width; margin: 2rem 0;
+		user-select: none; pointer-events: none;
+
+		&__img {
+			width: 100%;
+		}
+	}
 
 	&__list {
 		display: table;
+		max-width: $max-width; width: 100%;
 
 		&__event {
 			display: table-row;

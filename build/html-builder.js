@@ -198,6 +198,9 @@ const buildPage = async() => {
 		</div>
 		<div id="events" class="events">
 			<h2 class="heading">events</h2>
+			<div class="events__image">
+				<img class="events__image__img" src="public/image/band.webp" />
+			</div>
 			<div class="events__list">
 			${
 				_.events_reader.getData().reduce((total, {date, end_time, name, place, url}) => {
