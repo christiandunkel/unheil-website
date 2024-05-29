@@ -151,10 +151,7 @@ const buildPage = async() => {
 		</nav>
 		<div id="home" class="home">
 			<div class="home__box">
-				<picture class="home__box__logo">
-					<source srcset="public/image/logo-small.webp" type="image/webp" media="(max-width: 400px)">
-					<img class="home__box__logo__img" src="public/image/logo-normal.webp" alt="Unheil Logo" fetchpriority="high">
-				</picture>
+			<img class="home__box__logo" src="public/image/logo.webp" alt="Unheil Logo" fetchpriority="high">
 				<h1 class="home__box__heading">${SITE_NAME}</h1>
 				<p class="home__box__tagline">${DESCRIPTION}</p>
 				<div class="home__box__social-media">

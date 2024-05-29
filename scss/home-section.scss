@@ -11,18 +11,14 @@
 		contain: content;
 		display: flex;
 		flex-direction: column; align-items: center;
-		padding: 5rem 3rem;
+		max-width: 64rem; padding: 5rem 3rem;
 		border: 2px solid white;
 		overflow: hidden;
 		animation: fade-in-from-top 1s .3s, hidden .3s;
 
 		&__logo {
-			max-width: 58rem; width: 100%;
+			width: 100%;
 			user-select: none; pointer-events: none;
-
-			&__img {
-				width: 100%;
-			}
 		}
 
 		&__heading {
@@ -60,12 +56,12 @@
 
 				&__inner {
 					display: block;
-					padding: 1rem;
+					padding: 1.2rem;
 					border: 1px solid white; border-radius: .4rem;
 					transition: background-color .2s, transform .1s;
 
 					> svg {
-						$size: 2.4rem;
+						$size: 2.6rem;
 						width: $size; height: $size;
 
 						> path {
