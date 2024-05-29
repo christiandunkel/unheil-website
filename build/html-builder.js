@@ -116,6 +116,11 @@ const buildPage = async() => {
 		</head>
 	</head>
 	<body>
+		<nav class="top-navigation">
+			<button class="button">About</button>
+			<button class="button">Events</button>
+			<button class="button">Images</button>
+		</nav>
 	</body>
 </html>
 	
