@@ -117,12 +117,12 @@ const buildPage = async() => {
 	</head>
 	<body>
 		<nav class="navigation">
-			<button class="navigation__button">home</button>
-			<button class="navigation__button">events</button>
-			<button class="navigation__button">gallery</button>
-			<button class="navigation__button">about</button>
+			<button class="navigation__button" data-scroll-to="home">home</button>
+			<button class="navigation__button" data-scroll-to="events">events</button>
+			<button class="navigation__button" data-scroll-to="gallery">gallery</button>
+			<button class="navigation__button" data-scroll-to="about">about</button>
 		</nav>
-		<div class="home">
+		<div id="home" class="home">
 			<picture class="home__logo">
 				<source srcset="public/image/logo-small.webp" type="image/webp" media="(max-width: 400px)">
 				<img class="home__logo__img" src="public/image/logo-normal.webp" alt="Unheil Logo" fetchpriority="high">
@@ -130,6 +130,9 @@ const buildPage = async() => {
 			<h1 class="home__heading">Unheil</h1>
 			<p class="home__tagline">Atmospheric / Depressive Black Metal from Germany</p>
 		</div>
+		<div id="events" class="events" style="min-height: 500px"></div>
+		<div id="gallery" class="gallery" style="min-height: 500px"></div>
+		<div id="about" class="about" style="min-height: 500px"></div>
 		<script src="public/app.js" defer></script>
 	</body>
 </html>

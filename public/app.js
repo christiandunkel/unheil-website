@@ -1,1 +1,1 @@
-!(function(){var o=Math.random();console.log("Test","abcdef"),window.test2=o})();
+!(function(){for(var l="data-scroll-to",o=document.querySelectorAll("["+l+"]"),n=0,t=o.length;n<t;n++)!(function(){var t,e=o[n];e.addEventListener("click",function(){var o;e.disabled=!0,t||(o=e.getAttribute(l),t=t||document.querySelector("#"+o)),setTimeout(function(){e.disabled=!1;var o=Math.round(t.getBoundingClientRect().top),o=Math.max(0,o-120+window.scrollY);"scrollBehavior"in document.body.style?scrollTo({top:o,behavior:"smooth"}):scrollTo(0,o)},90)})})()})();
