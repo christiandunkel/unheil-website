@@ -1,0 +1,16 @@
+.about {
+	contain: content;
+	display: flex;
+	align-items: center; justify-content: center;
+	min-height: 100vh;
+	overflow: hidden;
+
+	&__logo {
+		max-width: 900px; width: 90%; padding: 12rem 2rem 5rem 2rem;
+		user-select: none; pointer-events: none;
+
+		&__img {
+			width: 100%;
+		}
+	}
+}

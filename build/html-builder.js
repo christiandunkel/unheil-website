@@ -116,11 +116,17 @@ const buildPage = async() => {
 		</head>
 	</head>
 	<body>
-		<nav class="top-navigation">
-			<button class="button">About</button>
-			<button class="button">Events</button>
-			<button class="button">Images</button>
+		<nav class="navigation">
+			<button class="navigation__button">about</button>
+			<button class="navigation__button">events</button>
+			<button class="navigation__button">images</button>
 		</nav>
+		<div class="about">
+			<picture class="about__logo">
+				<source srcset="public/image/logo-small.webp" type="image/webp" media="(max-width: 400px)">
+				<img class="about__logo__img" src="public/image/logo-normal.webp" alt="Unheil Logo" fetchpriority="high">
+			</div>
+		</div>
 	</body>
 </html>
 	
