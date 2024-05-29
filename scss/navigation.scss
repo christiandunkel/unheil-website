@@ -21,5 +21,10 @@
 			text-decoration-thickness: .1em;
 			text-underline-offset: .2em;
 		}
+
+		@media (max-width: 500px) {
+			padding: 0 .7rem;
+			font-size: 1.9rem;
+		}
 	}
 }
