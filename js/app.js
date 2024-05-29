@@ -20,7 +20,6 @@
 					button.disabled = false;
 					const element_y = Math.round(target.getBoundingClientRect().top);
 					const scroll_y = Math.max(0, element_y - offset + window.scrollY);
-			
 					if ('scrollBehavior' in document.body.style) {
 						scrollTo({
 							top: scroll_y,
@@ -30,6 +29,15 @@
 					else {
 						scrollTo(0, scroll_y);
 					}
+					
+					// force focus on the section that comes into view
+					const onBlur = () => {
+						target.removeEventListener('blur', onBlur);
+						target.removeAttribute('tabindex');
+					};
+					target.addEventListener('blur', onBlur);
+					target.tabIndex = 0;
+					target.focus();
 				}, 90);
 			});
 		}
