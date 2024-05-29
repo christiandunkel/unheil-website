@@ -207,7 +207,12 @@ const buildPage = async() => {
 					return total + `<div class="events__list__event" data-event-end-time="${end_time}">
 						<span class="events__list__event__date">${encodeHtml(date)}</span>
 						<span class="events__list__event__place">${encodeHtml(place)}</span>
-						<a class="events__list__event__link" href="${url ? encodeHtml(url) : 'javascript: void(0)'}" target="_blank" rel="noopener noreferrer">${encodeHtml(name)}</a>
+						${
+							url ? 
+							`<a class="events__list__event__link" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer">${encodeHtml(name)}</a>` :
+							`<span class="events__list__event__name">${name}</span>`
+						}
+						
 					</div>`
 				}, '')
 			}
