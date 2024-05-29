@@ -54,6 +54,7 @@ const buildPage = async() => {
 	const encoded_description = encodeHtml(DESCRIPTION);
 	const encoded_url = `https://${encodeHtml(DOMAIN)}`;
 	const encoded_site_name = encodeHtml(SITE_NAME);
+	const cache_invalidator = Math.floor(Math.random() * 10000000000).toString(36);
 
 	const html = `
 	
@@ -65,7 +66,7 @@ const buildPage = async() => {
 		<title>${encoded_title}</title>
 		<link rel="preload" href="public/font/roboto-mono-regular.woff2" as="font" type="font/woff2" crossorigin="">
 		<link rel="preload" href="public/font/roboto-mono-semi-bold.woff2" as="font" type="font/woff2" crossorigin="">
-		<link rel="stylesheet" href="public/app.css" />
+		<link rel="stylesheet" href="public/app.css?${cache_invalidator}" />
 		<link rel="canonical" href="${encoded_url}" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<meta name="robots" content="index, follow" />
@@ -135,7 +136,7 @@ const buildPage = async() => {
 		<div id="events" class="events" style="min-height: 500px"></div>
 		<div id="gallery" class="gallery" style="min-height: 500px"></div>
 		<div id="about" class="about" style="min-height: 500px"></div>
-		<script src="public/app.js" defer></script>
+		<script src="public/app.js?${cache_invalidator}" defer></script>
 	</body>
 </html>
 	
