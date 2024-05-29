@@ -10,14 +10,17 @@
 		for (let i = 0, len = scroll_to_buttons.length; i < len; i++) {
 			const button = scroll_to_buttons[i];
 			let target;
+			let is_running;
 			button.addEventListener('click', () => {
-				button.disabled = true;
+				if (is_running) return;
+				is_running = true;
 				if (!target) {
 					const target_id = button.getAttribute(scroll_to_attribute);
 					target ||= document.querySelector(`#${target_id}`);
 				}
 				setTimeout(() => {
-					button.disabled = false;
+
+					// scroll section into view
 					const element_y = Math.round(target.getBoundingClientRect().top);
 					const scroll_y = Math.max(0, element_y - offset + window.scrollY);
 					if ('scrollBehavior' in document.body.style) {
@@ -38,6 +41,8 @@
 					target.addEventListener('blur', onBlur);
 					target.tabIndex = 0;
 					target.focus();
+
+					is_running = false;
 				}, 90);
 			});
 		}

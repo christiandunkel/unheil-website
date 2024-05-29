@@ -10,9 +10,12 @@
 	&__button {
 		contain: content;
 		display: inline-block;
+		height: 100%; margin: 0 .4rem; padding: 0 1.2rem;
 		overflow: hidden;
+		color: white; font-size: 2.5rem; line-height: 0; font-weight: bold; text-align: left;
+		user-select: none;
 
-		&:not([disabled]):hover > &__inner {
+		&:not([disabled]):hover {
 			text-decoration: underline;
 			text-decoration-thickness: .1em;
 			text-underline-offset: .2em;
@@ -25,16 +28,14 @@
 		&__inner {
 			display: flex;
 			align-items: center;
-			height: 100%; margin: 0 .4rem; padding: 0 1.2rem;
-			white-space: nowrap; text-overflow: ellipsis;
-			color: white; font-size: 2.5rem; line-height: 1; font-weight: bold; text-align: left; text-decoration: none;
-			user-select: none; cursor: pointer;
+			height: 100%;
+			line-height: 1;
 			transition: transform .1s;
+		}
 
-			@media (max-width: 500px) {
-				padding: 0 .7rem;
-				font-size: 1.9rem;
-			}
+		@media (max-width: 500px) {
+			padding: 0 .7rem;
+			font-size: 1.9rem;
 		}
 	}
 }

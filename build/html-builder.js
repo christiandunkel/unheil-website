@@ -173,9 +173,7 @@ const buildPage = async() => {
 				</div>
 			</div>
 		</div>
-		<div id="events" class="events" style="min-height: 500px">
-					<a href="#" style="color: white; font-size: 5rem">test</a>
-		</div>
+		<div id="events" class="events" style="min-height: 500px"></div>
 		<div id="gallery" class="gallery" style="min-height: 500px"></div>
 		<div id="about" class="about" style="min-height: 500px"></div>
 		<script src="public/app.js?${cache_invalidator}" defer></script>
