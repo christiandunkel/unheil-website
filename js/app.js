@@ -21,6 +21,19 @@
 				setTimeout(() => {
 					const element_y = Math.round(target.getBoundingClientRect().top);
 					const scroll_y = Math.max(0, element_y - offset + window.scrollY);
+
+					// force focus on the section that comes into view
+					// must be called before the scroll is run, as otherwise the offset won't work properly in some cases, e.g., if the user is at top of page and clicks to scroll to a lower element
+					const onBlur = () => {
+						target.removeEventListener('blur', onBlur);
+						target.removeAttribute('tabindex');
+					};
+					target.addEventListener('blur', onBlur);
+					target.tabIndex = 0;
+					target.focus({
+						preventScroll: true
+					});
+
 					if ('scrollBehavior' in document.body.style) {
 						scrollTo({
 							top: scroll_y,
@@ -30,6 +43,7 @@
 					else {
 						scrollTo(0, scroll_y);
 					}
+
 					is_running = false;
 				}, 90);
 			});
