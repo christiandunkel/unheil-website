@@ -5,7 +5,7 @@
 	display: flex;
 	align-items: center; justify-content: center;
 	min-height: calc(100vh - globals.$navigation-height); margin-top: globals.$navigation-height;
-	padding: 2.5rem 1rem;
+	padding: 2.5rem 1rem 4rem 1rem;
 	overflow: hidden;
 
 	&__box {
@@ -23,7 +23,7 @@
 
 		&__heading {
 			margin: -2rem 0 0 0;
-			color: white; font-size: 7rem; line-height: 1;
+			color: white; font-size: 7rem; line-height: 1; font-weight: bold;
 
 			@media (max-width: 450px) {
 				margin-top: 1rem;

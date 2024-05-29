@@ -172,9 +172,6 @@ const buildPage = async() => {
 			<button class="navigation__button" data-scroll-to="events">
 				<span class="navigation__button__inner">events</span>
 			</button>
-			<button class="navigation__button" data-scroll-to="gallery">
-				<span class="navigation__button__inner">gallery</span>
-			</button>
 			<button class="navigation__button" data-scroll-to="about">
 				<span class="navigation__button__inner">about</span>
 			</button>
@@ -197,7 +194,7 @@ const buildPage = async() => {
 			</div>
 		</div>
 		<div id="events" class="events">
-			<h2 class="heading">events</h2>
+			<h2 class="events__heading">events</h2>
 			<div class="events__image">
 				<img class="events__image__img" src="public/image/band.webp" />
 			</div>
@@ -218,8 +215,7 @@ const buildPage = async() => {
 			}
 			</div>
 		</div>
-		<div id="gallery" class="gallery" style="min-height: 500px"></div>
-		<div id="about" class="about" style="min-height: 500px"></div>
+		<div id="about" class="about"></div>
 		<script src="public/app.js?${cache_invalidator}" defer></script>
 	</body>
 </html>
