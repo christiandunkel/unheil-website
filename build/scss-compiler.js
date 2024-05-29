@@ -1,3 +1,5 @@
+'use strict';
+
 const _ = {
 	fs: require('fs'),
 	path: require('path'),

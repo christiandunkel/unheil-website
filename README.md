@@ -9,3 +9,7 @@
 1. Modify your data and image files.
 2. Execute [`build.bat`](build.bat) to build all static files.
 3. Commit all changes (changed source files and generated static files) to the repository.
+
+**Changing Events**
+1. Modify [`build/events.json`](build/events.json) by adding, changing or deleting events.
+2. Save your changes as explained in section **Making Changes**.

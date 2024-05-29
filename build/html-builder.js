@@ -1,4 +1,8 @@
+'use strict';
+
 const _ = {
+	events_reader: require('./events-reader.js'),
+	html_minifier_terser: require('html-minifier-terser'),
 	fs: require('fs'),
 	path: require('path')
 };
@@ -63,7 +67,7 @@ const minifyHtml = async(html) => {
 		throw new Error(`Expected a string, but got ${typeof html} "${html}"`);
 	}
 
-	return await require('html-minifier-terser').minify(html, {
+	return await _.html_minifier_terser.minify(html, {
 		// remove whitespace, combines multiply spaces into a single one (or zero, if no spaces are needed there)
 		collapseWhitespace: true,
 		conservativeCollapse: false,
@@ -160,20 +164,34 @@ const buildPage = async() => {
 		<div id="home" class="home">
 			<div class="home__box">
 			<img class="home__box__logo" src="public/image/logo.webp" alt="Unheil Logo" fetchpriority="high">
-				<h1 class="home__box__heading">${SITE_NAME}</h1>
-				<p class="home__box__tagline">${DESCRIPTION}</p>
+				<h1 class="home__box__heading">${encoded_site_name}</h1>
+				<p class="home__box__tagline">${encoded_description}</p>
 				<div class="home__box__social-media">
 					${
-						SOCIAL_MEDIA.reduce((total, {name, url, icon}) =>
-							total + `<a class="home__box__social-media__link" href="${url}" target="_blank" rel="noopener noreferrer" aria-label="${name}" title="${name}">
+						SOCIAL_MEDIA.reduce((total, {name, url, icon}) => {
+							const encoded_name = encodeHtml(name);
+							return total + `<a class="home__box__social-media__link" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer" aria-label="${encoded_name}" title="${encoded_name}">
 								<span class="home__box__social-media__link__inner">${icon}</span>
 							</a>`
-						, '')
+						}, '')
 					}
 				</div>
 			</div>
 		</div>
-		<div id="events" class="events" style="min-height: 500px"></div>
+		<div id="events" class="events">
+			<h2 class="heading">events</h2>
+			<div class="events__list">
+			${
+				_.events_reader.getData().reduce((total, {date, end_time, name, place, url}) => {
+					return total + `<div class="events__list__event" data-event-end-time="${end_time}">
+						<span class="events__list__event__date">${encodeHtml(date)}</span>
+						<span class="events__list__event__place">${encodeHtml(place)}</span>
+						<a class="events__list__event__link" href="${url ? encodeHtml(url) : 'javascript: void(0)'}" target="_blank" rel="noopener noreferrer">${encodeHtml(name)}</a>
+					</div>`
+				}, '')
+			}
+			</div>
+		</div>
 		<div id="gallery" class="gallery" style="min-height: 500px"></div>
 		<div id="about" class="about" style="min-height: 500px"></div>
 		<script src="public/app.js?${cache_invalidator}" defer></script>
@@ -181,6 +199,8 @@ const buildPage = async() => {
 </html>
 	
 	`;
+
+	console.log(  );
 
 	const public_path = _.path.join(__dirname, '..', 'index.html');
 	const minified_html = await minifyHtml(html);

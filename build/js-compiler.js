@@ -1,3 +1,5 @@
+'use strict';
+
 const _ = {
 	babel: require('@babel/core'),
 	fs: require('fs'),

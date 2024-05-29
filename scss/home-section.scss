@@ -4,7 +4,8 @@
 	contain: content;
 	display: flex;
 	align-items: center; justify-content: center;
-	min-height: calc(100vh - globals.$navigation-height); padding: 2.5rem 1rem;
+	min-height: calc(100vh - globals.$navigation-height); margin-top: globals.$navigation-height;
+	padding: 2.5rem 1rem;
 	overflow: hidden;
 
 	&__box {
@@ -59,12 +60,12 @@
 
 				&__inner {
 					display: block;
-					padding: 1.2rem;
+					padding: 1rem;
 					border: 1px solid white; border-radius: .4rem;
 					transition: background-color .2s, transform .1s;
 
 					> svg {
-						$size: 2.6rem;
+						$size: 3rem;
 						width: $size; height: $size;
 
 						> path {

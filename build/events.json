@@ -1,0 +1,30 @@
+[
+	{
+		"start_date": "2096-01-30",
+		"end_date": "2096-01-31",
+		"name": "Future Event",
+		"place": "New York, US",
+		"url": ""
+	},
+	{
+		"start_date": "2089-08-02",
+		"end_date": "2089-08-02",
+		"name": "Future Event",
+		"place": "",
+		"url": ""
+	},
+	{
+		"start_date": "2085-06-29",
+		"end_date": "2085-08-30",
+		"name": "Future Event",
+		"place": "Berlin, DE",
+		"url": ""
+	},
+	{
+		"start_date": "2023-10-21",
+		"end_date": "2023-10-21",
+		"name": "Düschda Vol. 1",
+		"place": "Crispendorf, DE",
+		"url": ""
+	}
+]
