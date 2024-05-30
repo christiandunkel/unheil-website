@@ -260,7 +260,7 @@ const buildPage = async() => {
 		</section>
 		<section id="about" class="about">
 			<h2 class="about__heading">about</h2>
-			<h2 class="about__description">Unheil is a black metal band made in German. We are made up of Chris, Kim, Maya, and TO. Join us at our next events.</h2>
+			<h2 class="about__description">Unheil is a black metal band made in Germany. We are made up of Chris, Kim, Maya, and TO. Join us at our next events.</h2>
 			<div class="about__gallery">
 				${
 					(await _.image_compiler.getData()).reduce((total, {thumbnail_output_url, output_url}) => {
