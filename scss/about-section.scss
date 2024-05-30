@@ -3,7 +3,7 @@
 .about {
 	display: flex;
 	flex-direction: column; align-items: center; justify-content: center;
-	min-height: 100vh; padding: globals.$navigation-height 2rem;
+	min-height: 100vh; padding: (globals.$navigation-height + 2.5rem) 2rem;
 
 	&__heading {
 		color: white; font-size: 7rem; line-height: 1.3; font-weight: bold;

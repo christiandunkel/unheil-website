@@ -177,7 +177,7 @@ const buildPage = async() => {
 				<span class="navigation__button__inner">about</span>
 			</button>
 		</nav>
-		<div id="home" class="home">
+		<header id="home" class="home">
 			<div class="home__box">
 			<img class="home__box__logo" src="public/image/logo.webp" alt="Unheil Logo" fetchpriority="high">
 				<h1 class="home__box__heading">${encoded_site_name}</h1>
@@ -193,8 +193,8 @@ const buildPage = async() => {
 					}
 				</div>
 			</div>
-		</div>
-		<div id="events" class="events">
+		</header>
+		<section id="events" class="events">
 			<h2 class="events__heading">events</h2>
 			<picture class="events__image">
 				<source srcset="public/image/band-small.webp" type="image/webp" media="(max-width: 500px)">
@@ -216,14 +216,14 @@ const buildPage = async() => {
 				}, '')
 			}
 			</div>
-		</div>
-		<div id="about" class="about">
+		</section>
+		<section id="about" class="about">
 			<h2 class="about__heading">about</h2>
 			<h2 class="about__description">Unheil is a black metal band made in German. We are made up of Chris, Kim, Maya, and TO. Join us at our next events.</h2>
 			<div class="about__gallery">
 				${
 					(await _.image_compiler.getData()).reduce((total, {thumbnail_output_url, output_url}) => {
-						return total + `<button class="about__gallery__image" data-image-url="${output_url}" aria-label="Open image" title="Open image">
+						return total + `<button class="about__gallery__image" data-open-image-menu="${output_url}" aria-label="Open image" title="Open image" aria-controls="image-menu" aria-expanded="false" aria-haspopup="dialog">
 							<span class="about__gallery__image__inner">
 								<img class="about__gallery__image__inner__img" src="${thumbnail_output_url}" />
 							</span>
@@ -231,6 +231,12 @@ const buildPage = async() => {
 					}, '')
 				}
 			</div>
+		</section>
+		<div id="image-menu" class="image-menu" role="dialog" aria-modal="true">
+			<button class="image-menu__close-button" aria-label="Close" title="Close" aria-controls="image-menu" aria-expanded="false">
+				<!-- https://fontawesome.com/icons/xmark?f=classic&s=solid -->
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+			</button>
 		</div>
 		<script src="public/app.js?${cache_invalidator}" defer></script>
 	</body>

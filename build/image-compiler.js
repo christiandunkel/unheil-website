@@ -23,14 +23,13 @@ const buildImages = async() => {
 	});
 	_.fs.mkdirSync(OUTPUT_DIRECTORY);
 
-	for (const {input_path, output_path, thumbnail_output_path} of await getData()) {
-		const {width, height} = await _.sharp(input_path).metadata();
+	for (const {width, height, input_path, output_path, thumbnail_output_path} of await getData()) {
 		for (const is_small of [true, false]) {
 			const min_size = 360;
-			let output_width = is_small ? min_size : Math.min(width, 1920);
+			let output_width = is_small ? min_size : Math.min(width, 1280);
 			let output_height = Math.floor(output_width * height / width);
 			if (output_height < min_size) {
-				output_height = is_small ? min_size : Math.min(height, 1080);
+				output_height = is_small ? min_size : Math.min(height, 720);
 				output_width = Math.floor(output_height * width / height);
 			}
 
@@ -89,6 +88,8 @@ const getData = async() => {
 			`.${valid_extensions.indexOf(extension)}`;
 
 		images.push({
+			width: width,
+			height: height,
 			input_path: path,
 			thumbnail_output_path: _.path.join(OUTPUT_DIRECTORY, `${output_basename}.thumbnail.webp`),
 			thumbnail_output_url: OUTPUT_URL + `${output_basename}.thumbnail.webp`,
