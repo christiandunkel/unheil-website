@@ -24,6 +24,10 @@ body.image-menu-is-open {
 		overflow-y: auto;
 		text-align: center;
 
+		@media (max-width: 600px) {
+			padding: 5rem 2rem;
+		}
+
 		&__image {
 			display: inline-block;
 			width: 100%;
