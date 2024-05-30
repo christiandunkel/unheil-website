@@ -12,8 +12,10 @@
 	"dependencies": {
 		"@babel/core": "7.24.6",
 		"@babel/preset-env": "7.24.6",
+		"@img/sharp-win32-x64": "0.33.4",
 		"html-minifier-terser": "7.2.0",
 		"sass": "1.77.2",
+		"sharp": "0.33.4",
 		"uglify-js": "3.17.4"
 	}
 }

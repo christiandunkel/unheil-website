@@ -13,3 +13,9 @@
 **Changing Events**
 1. Modify [`build/events.json`](build/events.json) by adding, changing or deleting events.
 2. Save your changes as explained in section **Making Changes**.
+
+**Changing Images**
+1. Place the image inside the [`images/`](images/) directory.
+   - Accepted image formats are `.webp`, `.png` and `.jpg`.
+   - Images are displayed on the page in the same order as placed in the directory. 
+2. Save your changes as explained in section **Making Changes**.
