@@ -33,6 +33,10 @@ body.image-menu-is-open {
 			&__img {
 				width: 100%;
 				pointer-events: none;
+
+				&--hidden {
+					opacity: 0;	
+				}
 			}
 		}
 	}

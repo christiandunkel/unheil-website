@@ -78,6 +78,7 @@
 		let image_container;
 		let image_element;
 		const loadImageIntoMenu = url => {
+			const image_hidden_class = 'image-menu__inner__image__img--hidden';
 			if (!inner_element) {
 				inner_element = document.createElement('div');
 				inner_element.className = 'image-menu__inner';
@@ -87,6 +88,7 @@
 				image_element.className = 'image-menu__inner__image__img';
 				image_element.onload = () => {
 					image_container.style.maxWidth = image_element.naturalWidth;
+					image_element.classList.remove(image_hidden_class);
 				};
 				image_container.appendChild(image_element);
 				inner_element.appendChild(image_container);
@@ -94,6 +96,7 @@
 			}
 
 			image_container.style.removeProperty('max-width');
+			image_element.classList.add(image_hidden_class);
 			image_element.src = url;
 		};
 
