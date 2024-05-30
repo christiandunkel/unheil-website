@@ -8,6 +8,7 @@
 	min-height: 100vh; padding: (globals.$navigation-height + 2.5rem) 2rem 2.5rem 2rem;
 
 	&__heading {
+		margin: 0 0 2rem 0;
 		color: white; font-size: 7rem; line-height: 1.3; font-weight: bold;
 	}
 
@@ -21,77 +22,62 @@
 	}
 
 	&__list {
-		$border-width: 2px;
-		$border-color: rgba(255, 255, 255, .5);
-
-		display: table;
 		max-width: $max-width; width: 100%;
+		overflow-x: auto;
 
-		&__event {
-			display: table-row;
-			color: white; font-size: 2.2rem; line-height: 1.3;
-
-			&--is-over {
-				opacity: .3;
-			}
-
-			> * {
-				display: table-cell;
-				padding: 2.5rem 0;
-				border-bottom: $border-width solid $border-color;
-			}
-
-			&__date {
-				padding-left: 1rem;
-			}
-
-			&__place {
-				padding-left: 3rem; padding-right: 2rem;
-			}
-
-			&__name,
-			&__link {
-				padding-left: 1rem; padding-right: 1rem;
-				color: white; font-weight: bold;
-			}
-
-			&__link {
-				text-decoration: underline;
-				text-underline-offset: .2em;
-				text-decoration-thickness: .1em;
-
-				&:hover {
-					text-decoration: none;
-				}
-			}
-		}
-
-		@media (max-width: 700px) {
-			display: block;
-			max-width: 30rem; width: 100%;
+		&__inner {
+			display: table;
+			width: 100%;
+			border-collapse: collapse;
 
 			&__event {
-				$distance: 3rem;
+				display: table-row;
+				border-bottom: 2px solid rgba(255, 255, 255, .5);
+				color: white; font-size: 2.2rem; line-height: 1.3;
 
-				display: block;
-				margin: $distance 0; padding-bottom: $distance;
-				border: $border-width solid $border-color;
-				border-width: 0 0 $border-width 0;
-				text-align: center;
-
-				&:first-child {
-					padding-top: $distance;
-					border-width: $border-width 0;
+				&--is-over {
+					opacity: .3;
 				}
 
 				> * {
-					display: block;
-					margin: .6rem 0; padding: 0;
-					border: none;
+					display: table-cell;
+					padding-top: 2.5rem; padding-bottom: 2.5rem;
+				}
+
+				&__date {
+					padding-left: 1rem;
+				}
+
+				&__place {
+					padding-left: 3rem; padding-right: 2rem;
+				}
+
+				&__name,
+				&__link {
+					padding-left: 1rem; padding-right: 1rem;
+					color: white; font-weight: bold;
 				}
 
 				&__link {
-					display: inline-block;
+					text-decoration: underline;
+					text-underline-offset: .2em;
+					text-decoration-thickness: .1em;
+
+					&:hover {
+						text-decoration: none;
+					}
+				}
+
+				@media (max-width: 600px) {
+					font-size: 1.9rem;
+
+					> * {
+						padding-top: 2rem; padding-bottom: 2rem;
+					}
+
+					&__place {
+						padding-left: 2rem; padding-right: 1rem;
+					}
 				}
 			}
 		}

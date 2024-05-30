@@ -59,7 +59,7 @@
 			const element = elements[i];
 			const end_time = parseInt(element.getAttribute(attribute));
 			if (Date.now() > end_time) {
-				element.classList.add('events__list__event--is-over');
+				element.classList.add('events__list__inner__event--is-over');
 			}
 		}
 	};

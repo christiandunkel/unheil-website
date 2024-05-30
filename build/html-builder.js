@@ -235,26 +235,28 @@ const buildPage = async() => {
 		</header>
 		<section id="events" class="events">
 			<h2 class="events__heading">events</h2>
+			<div class="events__list">
+				<ol class="events__list__inner">
+					${
+						_.events_reader.getData().reduce((total, {date, end_time, name, place, url}) => {
+							return total + `<li class="events__list__inner__event" data-event-end-time="${end_time}">
+								<span class="events__list__inner__event__date">${encodeHtml(date)}</span>
+								<span class="events__list__inner__event__place">${encodeHtml(place)}</span>
+								${
+									url ? 
+									`<a class="events__list__inner__event__link" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer">${encodeHtml(name)}</a>` :
+									`<span class="events__list__inner__event__name">${name}</span>`
+								}
+								
+							</li>`
+						}, '')
+					}
+				</ol>
+			</div>
 			<picture class="events__image">
 				<source srcset="public/image/band-small.webp" type="image/webp" media="(max-width: 500px)">
 				<img class="events__image__img" src="public/image/band-regular.webp" />
 			</picture>
-			<div class="events__list">
-			${
-				_.events_reader.getData().reduce((total, {date, end_time, name, place, url}) => {
-					return total + `<div class="events__list__event" data-event-end-time="${end_time}">
-						<span class="events__list__event__date">${encodeHtml(date)}</span>
-						<span class="events__list__event__place">${encodeHtml(place)}</span>
-						${
-							url ? 
-							`<a class="events__list__event__link" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer">${encodeHtml(name)}</a>` :
-							`<span class="events__list__event__name">${name}</span>`
-						}
-						
-					</div>`
-				}, '')
-			}
-			</div>
 		</section>
 		<section id="about" class="about">
 			<h2 class="about__heading">about</h2>
