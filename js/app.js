@@ -6,16 +6,16 @@
 	const initializeNavigationButtons = () => {
 		const attribute = 'data-scroll-to';
 		const buttons = document.querySelectorAll(`[${attribute}]`);
+		let is_running;
 		for (let i = 0, len = buttons.length; i < len; i++) {
 			const button = buttons[i];
 			let target;
-			let is_running;
 			button.addEventListener('click', () => {
 				if (is_running) return;
 				is_running = true;
 				if (!target) {
 					const target_id = button.getAttribute(attribute);
-					target ||= document.querySelector(`#${target_id}`);
+					target = document.querySelector(`#${target_id}`);
 				}
 				setTimeout(() => {
 					const element_y = Math.round(target.getBoundingClientRect().top);
@@ -59,7 +59,7 @@
 			const element = elements[i];
 			const end_time = parseInt(element.getAttribute(attribute));
 			if (Date.now() > end_time) {
-				element.classList.add('events__list__event--over');
+				element.classList.add('events__list__event--is-over');
 			}
 		}
 	};
@@ -94,7 +94,6 @@
 				inner_element.appendChild(image_container);
 				menu.appendChild(inner_element);
 			}
-
 			image_container.style.removeProperty('max-width');
 			image_element.classList.add(image_hidden_class);
 			image_element.src = url;
