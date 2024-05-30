@@ -4,6 +4,7 @@ const _ = {
 	events_reader: require('./events-reader.js'),
 	image_compiler: require('./image-compiler.js'),
 	html_minifier_terser: require('html-minifier-terser'),
+	crypto: require('crypto'),
 	fs: require('fs'),
 	path: require('path')
 };
@@ -132,6 +133,14 @@ const getSocialMediaLinksHtml = () => {
 };
 
 /**
+ * generates a hash unique to the contents of a file
+ */
+const getFileHash = file_path => {
+	const file_content = _.fs.readFileSync(file_path).toString();
+	return _.crypto.createHash('md5').update(file_content).digest('hex').slice(0, 12);
+};
+
+/**
  * generates the code for the index HTML page
  */
 const buildPage = async() => {
@@ -143,7 +152,12 @@ const buildPage = async() => {
 	const preview_image = `${encoded_url}/public/image/preview.webp`;
 	const preview_image_width = 1200;
 	const preview_image_height = 630;
-	const cache_invalidator = Math.floor(Math.random() * 10000000000).toString(36);
+	const css_location = 'public/app.css';
+	const css_hash = getFileHash(_.path.join(__dirname, '..', css_location));
+	const css_url = `${css_location}?${css_hash}`;
+	const js_location = 'public/app.js';
+	const js_hash = getFileHash(_.path.join(__dirname, '..', js_location));
+	const js_url = `${js_location}?${js_hash}`;
 
 	const html = `
 <html lang="${LOCALE.split('_')[0]}" dir="ltr" prefix="og: https://ogp.me/ns#">
@@ -154,7 +168,7 @@ const buildPage = async() => {
 		<title>${encoded_title}</title>
 		<link rel="preload" href="public/font/roboto-mono-regular.woff2" as="font" type="font/woff2" crossorigin="">
 		<link rel="preload" href="public/font/roboto-mono-semi-bold.woff2" as="font" type="font/woff2" crossorigin="">
-		<link rel="stylesheet" href="public/app.css?${cache_invalidator}" />
+		<link rel="stylesheet" href="${css_url}" />
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<link rel="canonical" href="${encoded_url}" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -282,7 +296,7 @@ const buildPage = async() => {
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
 			</button>
 		</div>
-		<script src="public/app.js?${cache_invalidator}" defer></script>
+		<script src="${js_url}" defer></script>
 	</body>
 </html>`;
 
