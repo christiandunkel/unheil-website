@@ -275,7 +275,7 @@ const buildPage = async() => {
 			</div>
 		</section>
 		<footer class="footer">
-			<p class="footer__text">This website is hosted on github pages. To find out what data Github collects, check out their <a class="footer__text__link" href="https://docs.github.com/en/site-policy">privacy policy</a>. If you want to get in contact, write an e-mail to <a class="footer__text__link" href="mailto:${encoded_email}">${encoded_email}</a>.</p>
+			<p class="footer__text">This website is hosted on GitHub pages. To find out what data GitHub collects, check out their <a class="footer__text__link" href="https://docs.github.com/en/site-policy">privacy policy</a>. To get in contact, write an e-mail at <a class="footer__text__link" href="mailto:${encoded_email}">${encoded_email}</a>.</p>
 		</footer>
 		<div id="image-menu" class="image-menu" role="dialog" aria-modal="true">
 			<button class="image-menu__close-button" aria-label="Close" title="Close" aria-controls="image-menu" aria-expanded="false">
