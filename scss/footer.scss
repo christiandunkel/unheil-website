@@ -3,7 +3,7 @@
 	text-align: center;
 
 	&__text {
-		color: #919191; font-size: 1.6rem; line-height: 1.4;
+		color: #919191; font-size: 1.6rem; line-height: 1.4; text-wrap: balance;
 
 		&__link {
 			color: inherit; font-weight: bold;
