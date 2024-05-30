@@ -94,43 +94,41 @@ const minifyHtml = async(html) => {
 	});
 };
 
+let SOCIAL_MEDIA_LINKS;
+
 /**
  * gets the HTML code for the social media links in the home section
  */
 const getSocialMediaLinksHtml = () => {
-	const links_fullwidth = [];
-	const links_small = [];
+	if (!SOCIAL_MEDIA_LINKS) {
+		const links_fullwidth = [];
+		const links_regular = [];
 
-	for (const {name, url, full_text, icon} of SOCIAL_MEDIA) {
-		const encoded_name = encodeHtml(name);
-		const label = full_text ? '' : ` aria-label="${encoded_name}" title="${encoded_name}"`;
-		const classes = ['home__box__social-media__link'];
-		if (full_text) {
-			classes.push('home__box__social-media__link--fullwidth');
-		}
-		else if (links_small.length === 0) {
-			classes.push('home__box__social-media__link--no-left-margin');
+		for (const {name, url, full_text, icon} of SOCIAL_MEDIA) {
+			const encoded_name = encodeHtml(name);
+			const label = full_text ? '' : ` aria-label="${encoded_name}" title="${encoded_name}"`;
+
+			const html = `<a class="social-media__link" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer"${label}>
+				<span class="social-media__link__inner">${
+					icon +
+					(full_text ? `<span>${encodeHtml(full_text)}</span>` : '')
+				}</span>
+			</a>`;
+
+			if (full_text) {
+				links_fullwidth.push(html);
+			}
+			else {
+				links_regular.push(html);
+			}
 		}
 
-		const html = `<a class="${classes.join(' ')}" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer"${label}>
-			<span class="home__box__social-media__link__inner">${
-				icon +
-				(full_text ? `<span>${encodeHtml(full_text)}</span>` : '')
-			}</span>
-		</a>`;
-
-		if (full_text) {
-			links_fullwidth.push(html);
-		}
-		else {
-			links_small.push(html);
-		}
+		SOCIAL_MEDIA_LINKS = {
+			fullwidth: `<div class="social-media social-media--fullwidth">${links_fullwidth.join(' ')}</div>`,
+			regular: `<div class="social-media">${links_regular.join('')}</div>`
+		};
 	}
-
-	return `<div class="home__box__social-media">
-		${links_fullwidth.join(' ')}
-		${links_small.join('')}
-	</div>`;
+	return SOCIAL_MEDIA_LINKS;
 };
 
 /**
@@ -231,7 +229,7 @@ const buildPage = async() => {
 			<img class="home__box__logo" src="public/image/logo.webp" alt="Unheil Logo" fetchpriority="high">
 				<h1 class="home__box__heading">${encoded_site_name}</h1>
 				<p class="home__box__tagline">${encoded_description}</p>
-				${getSocialMediaLinksHtml()}
+				${getSocialMediaLinksHtml().fullwidth}
 			</div>
 		</header>
 		<section id="events" class="events">
@@ -275,6 +273,7 @@ const buildPage = async() => {
 			</div>
 		</section>
 		<footer class="footer">
+			${getSocialMediaLinksHtml().regular}
 			<p class="footer__text">This website is hosted on GitHub pages. To find out what data GitHub collects, check out their <a class="footer__text__link" href="https://docs.github.com/en/site-policy">privacy policy</a>. To get in contact, write an e-mail at <a class="footer__text__link" href="mailto:${encoded_email}">${encoded_email}</a>.</p>
 		</footer>
 		<div id="image-menu" class="image-menu" role="dialog" aria-modal="true">

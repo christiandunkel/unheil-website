@@ -1,8 +1,9 @@
 .footer {
-	max-width: 80rem; margin: 0 auto; padding: 0 1.5rem 4rem 1.5rem;
+	max-width: 80rem; margin: 0 auto; padding: 0 1.5rem 3rem 1.5rem;
 	text-align: center;
 
 	&__text {
+		margin-top: 1.5rem;
 		color: #919191; font-size: 1.6rem; line-height: 1.4; text-wrap: balance;
 
 		&__link {
