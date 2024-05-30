@@ -1,7 +1,8 @@
+@use 'sass:math';
 @use 'globals';
 
 .events {
-	$max-width: 800px;
+	$max-width: 60rem;
 
 	display: flex;
 	flex-direction: column; align-items: center; justify-content: center;
@@ -31,6 +32,8 @@
 			border-collapse: collapse;
 
 			&__event {
+				$inner-margin: 2.4rem;
+
 				display: table-row;
 				border-bottom: 2px solid rgba(255, 255, 255, .5);
 				color: white; font-size: 2.2rem; line-height: 1.3;
@@ -39,32 +42,38 @@
 					opacity: .3;
 				}
 
+				&:last-child {
+					border-bottom: none;
+				}
+
 				> * {
 					display: table-cell;
+					width: 50%;
 					padding-top: 2.5rem; padding-bottom: 2.5rem;
 				}
 
-				&__date {
-					padding-left: 1rem;
+				&__info {
+					padding-left: .4rem; padding-right: math.div($inner-margin, 2);
+
+					&__place {
+						color: rgba(255, 255, 255, .65);
+					}
 				}
 
-				&__place {
-					padding-left: 3rem; padding-right: 2rem;
-				}
-
-				&__name,
-				&__link {
-					padding-left: 1rem; padding-right: 1rem;
+				&__name {
+					padding-left: math.div($inner-margin, 2); padding-right: .4rem;
 					color: white; font-weight: bold;
-				}
+					
+					> a {
+						// overwrite link colors
+						color: inherit;
+						text-decoration: underline;
+						text-underline-offset: .2em;
+						text-decoration-thickness: .1em;
 
-				&__link {
-					text-decoration: underline;
-					text-underline-offset: .2em;
-					text-decoration-thickness: .1em;
-
-					&:hover {
-						text-decoration: none;
+						&:hover {
+							text-decoration: none;
+						}
 					}
 				}
 
@@ -73,10 +82,6 @@
 
 					> * {
 						padding-top: 2rem; padding-bottom: 2rem;
-					}
-
-					&__place {
-						padding-left: 2rem; padding-right: 1rem;
 					}
 				}
 			}

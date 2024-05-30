@@ -239,15 +239,15 @@ const buildPage = async() => {
 				<ol class="events__list__inner">
 					${
 						_.events_reader.getData().reduce((total, {date, end_time, name, place, url}) => {
+							const encoded_name = encodeHtml(name);
 							return total + `<li class="events__list__inner__event" data-event-end-time="${end_time}">
-								<span class="events__list__inner__event__date">${encodeHtml(date)}</span>
-								<span class="events__list__inner__event__place">${encodeHtml(place)}</span>
-								${
-									url ? 
-									`<a class="events__list__inner__event__link" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer">${encodeHtml(name)}</a>` :
-									`<span class="events__list__inner__event__name">${name}</span>`
-								}
-								
+								<span class="events__list__inner__event__info">${
+									encodeHtml(date) +
+									(place ? `<br /><span class="events__list__inner__event__info__place">${encodeHtml(place)}</span>` : '')
+								}</span>
+								<span class="events__list__inner__event__name">${
+									url ? `<a href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer">${encodeHtml(encoded_name)}</a>` : encoded_name
+								}</span>
 							</li>`
 						}, '')
 					}
