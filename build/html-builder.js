@@ -102,6 +102,7 @@ const getSocialMediaLinksHtml = () => {
 
 	for (const {name, url, full_text, icon} of SOCIAL_MEDIA) {
 		const encoded_name = encodeHtml(name);
+		const label = full_text ? '' : ` aria-label="${encoded_name}" title="${encoded_name}"`;
 		const classes = ['home__box__social-media__link'];
 		if (full_text) {
 			classes.push('home__box__social-media__link--fullwidth');
@@ -110,7 +111,7 @@ const getSocialMediaLinksHtml = () => {
 			classes.push('home__box__social-media__link--no-left-margin');
 		}
 
-		const html = `<a class="${classes.join(' ')}" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer" aria-label="${encoded_name}" title="${encoded_name}">
+		const html = `<a class="${classes.join(' ')}" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer"${label}>
 			<span class="home__box__social-media__link__inner">${
 				icon +
 				(full_text ? `<span>${encodeHtml(full_text)}</span>` : '')

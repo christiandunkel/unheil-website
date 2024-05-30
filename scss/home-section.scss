@@ -4,14 +4,14 @@
 	contain: content;
 	display: flex;
 	align-items: center; justify-content: center;
-	min-height: 100vh; padding: (globals.$navigation-height + 2rem) 1rem 3.5rem 1rem;
+	min-height: 100vh; padding: globals.$navigation-height 1rem 0 1rem;
 	overflow: hidden;
 
 	&__box {
 		contain: content;
 		display: flex;
 		flex-direction: column; align-items: center;
-		max-width: 56rem; padding: 3rem 0 1rem 0;
+		max-width: 56rem; padding: 4rem 0 6rem 0;
 		overflow: hidden;
 		animation: fade-in-from-top .7s .1s, hidden .1s;
 
@@ -98,9 +98,5 @@
 
 	@media (max-width: 600px) {
 		padding-left: 1.5rem; padding-right: 1.5rem;
-
-		&__box {
-			padding: 4rem 2.5rem;
-		}
 	}
 }

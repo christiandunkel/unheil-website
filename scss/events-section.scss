@@ -21,6 +21,9 @@
 	}
 
 	&__list {
+		$border-width: 2px;
+		$border-color: rgba(255, 255, 255, .5);
+
 		display: table;
 		max-width: $max-width; width: 100%;
 
@@ -35,7 +38,7 @@
 			> * {
 				display: table-cell;
 				padding: 2.5rem 0;
-				border-bottom: 3px dotted white;
+				border-bottom: $border-width solid $border-color;
 			}
 
 			&__date {
@@ -69,11 +72,10 @@
 
 			&__event {
 				$distance: 3rem;
-				$border-width: 3px;
 
 				display: block;
 				margin: $distance 0; padding-bottom: $distance;
-				border: $border-width dotted white;
+				border: $border-width solid $border-color;
 				border-width: 0 0 $border-width 0;
 				text-align: center;
 
