@@ -2,14 +2,23 @@
 
 .home {
 	contain: content;
-	display: flex;
+	display: flex; position: relative;
 	align-items: center; justify-content: center;
 	min-height: 100vh; padding: globals.$navigation-height 1rem 0 1rem;
 	overflow: hidden;
 
+	&::before {
+		content: '';
+		position: absolute; top: 42%; left: 50%; z-index: 1;
+		width: 80rem; height: 65rem;
+		background-image: radial-gradient(at 50% 50%, rgba(170, 180, 240, .25), transparent 62%);
+		transform: translate(-50%,-50%);
+		animation: fade-in 1.6s;
+	}
+
 	&__box {
 		contain: content;
-		display: flex;
+		display: flex; position: relative; z-index: 2;
 		flex-direction: column; align-items: center;
 		max-width: 56rem; padding: 4rem 0 6rem 0;
 		overflow: hidden;
