@@ -255,7 +255,7 @@ const buildPage = async() => {
 			</div>
 			<picture class="events__image">
 				<source srcset="public/image/band-small.webp" type="image/webp" media="(max-width: 500px)">
-				<img class="events__image__img" src="public/image/band-regular.webp" />
+				<img class="events__image__img" src="public/image/band-regular.webp" loading="lazy" />
 			</picture>
 		</section>
 		<section id="about" class="about">
@@ -270,7 +270,7 @@ const buildPage = async() => {
 					(await _.image_compiler.getData()).reduce((total, {alt_text, thumbnail_output_url, output_url}) =>
 						total + `<button class="about__gallery__image" data-open-image-menu="${output_url}" aria-label="Open image" title="Open image" aria-controls="image-menu" aria-expanded="false" aria-haspopup="dialog">
 							<span class="about__gallery__image__inner">
-								<img class="about__gallery__image__inner__img" src="${thumbnail_output_url}" alt="${alt_text}" />
+								<img class="about__gallery__image__inner__img" src="${thumbnail_output_url}" alt="${alt_text}" loading="lazy" />
 							</span>
 						</button>`,
 					'')
