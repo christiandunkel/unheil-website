@@ -4,14 +4,14 @@
 	contain: content;
 	display: flex;
 	align-items: center; justify-content: center;
-	min-height: 100vh; padding: (globals.$navigation-height + 2.5rem) 1rem 4rem 1rem;
+	min-height: 100vh; padding: (globals.$navigation-height + 2rem) 1rem 3.5rem 1rem;
 	overflow: hidden;
 
 	&__box {
 		contain: content;
 		display: flex;
 		flex-direction: column; align-items: center;
-		max-width: 58rem; padding: 3rem 0 1rem 0;
+		max-width: 56rem; padding: 3rem 0 1rem 0;
 		overflow: hidden;
 		animation: fade-in-from-top .7s .1s, hidden .1s;
 
@@ -21,7 +21,7 @@
 		}
 
 		&__heading {
-			margin: -2rem 0 0 0;
+			margin: -2.5rem 0 0 0;
 			color: white; font-size: 7rem; line-height: 1; font-weight: bold; text-transform: lowercase;
 
 			@media (max-width: 450px) {
@@ -38,18 +38,37 @@
 			text-align: center;
 			
 			&__link {
+				$margin: .3rem;
+
 				contain: content;
 				display: inline-block;
-				margin: .3rem;
+				margin: $margin;
 				overflow: hidden;
+				font-size: 3rem; line-height: 0;
 				user-select: none;
 
-				&:hover > &__inner {
-					background-color: white;
+				&--fullwidth {
+					display: block;
+					width: 100%; margin: ($margin * 2) 0 $margin 0;
+					overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+					font-size: 2rem; line-height: 1.3; font-weight: bold; text-decoration: none;
 
-					path {
-						fill: black;
+					svg {
+						margin-right: .5em;
 					}
+				}
+
+				&--no-left-margin {
+					margin-left: 0;
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&:hover > &__inner {
+					background-color: transparent;
+					color: white;
 				}
 
 				&:active > &__inner {
@@ -57,18 +76,19 @@
 				}
 
 				&__inner {
-					display: block;
+					display: flex;
+					align-items: center; justify-content: center;
 					padding: 1rem;
-					border: 1px solid white; border-radius: .4rem;
-					transition: background-color .2s, transform .1s;
+					background-color: white;
+					border: 2px solid white; border-radius: .4rem;
+					color: black;
+					transition: background-color .2s, color .2s, transform .1s;
 
 					> svg {
-						$size: 3rem;
-						width: $size; height: $size;
+						width: 1em; height: 1em;
 
 						> path {
-							fill: white;
-							transition: fill .2s;
+							fill: currentColor;
 						}
 					}
 				}

@@ -8,7 +8,7 @@ const _ = {
 	path: require('path')
 };
 
-const WEBSITE_TITLE = 'Unheil\'s Official Website';
+const WEBSITE_TITLE = 'Official Unheil - Black Metal made in Germany';
 const DESCRIPTION = 'Atmospheric / Depressive Black Metal made in Germany'
 // URL of the final website
 const DOMAIN = 'example.com';
@@ -19,7 +19,7 @@ const SOCIAL_MEDIA = [
 	{
 		name: 'Facebook',
 		url: 'https://www.facebook.com/unheil',
-		// https://fontawesome.com facebook-f.svg
+		// https://fontawesome.com/icons/facebook-f?f=brands&s=solid
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg>'
 	},
 	{
@@ -37,14 +37,22 @@ const SOCIAL_MEDIA = [
 	{
 		name: 'Bandcamp',
 		url: 'https://unheil.bandcamp.com',
-		// https://fontawesome.com bandcamp.svg
+		full_text: 'Buy the music',
+		// https://fontawesome.com/icons/bandcamp?f=brands&s=solid
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256S119 504 256 504 504 393 504 256 393 8 256 8zm48.2 326.1h-181L207.9 178h181z"/></svg>'
 	},
 	{
 		name: 'Spotify',
 		url: 'https://open.spotify.com/intl-de/artist/6zEizcmXWMtqcPSBWdWO6o',
-		// https://fontawesome.com spotify.svg
+		// https://fontawesome.com/icons/spotify?f=brands&s=solid
 		icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/></svg>'
+	},
+	{
+		name: 'Skullmerch',
+		url: 'https://www.skullmerch.com/front-band.php?shop=68',
+		full_text: 'Get your merch',
+		// https://fontawesome.com/icons/skull?f=classic&s=solid
+		icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9c0 .4 0 .7 0 1.1v64c0 26.5 21.5 48 48 48h48V464c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64V464c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48V400c0-.4 0-.7 0-1.1zM96 256a64 64 0 1 1 128 0A64 64 0 1 1 96 256zm256-64a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>'
 	}
 ];
 
@@ -83,6 +91,44 @@ const minifyHtml = async(html) => {
 		sortClassName: true,
 		removeComments: true
 	});
+};
+
+/**
+ * gets the HTML code for the social media links in the home section
+ */
+const getSocialMediaLinksHtml = () => {
+	const links_fullwidth = [];
+	const links_small = [];
+
+	for (const {name, url, full_text, icon} of SOCIAL_MEDIA) {
+		const encoded_name = encodeHtml(name);
+		const classes = ['home__box__social-media__link'];
+		if (full_text) {
+			classes.push('home__box__social-media__link--fullwidth');
+		}
+		else if (links_small.length === 0) {
+			classes.push('home__box__social-media__link--no-left-margin');
+		}
+
+		const html = `<a class="${classes.join(' ')}" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer" aria-label="${encoded_name}" title="${encoded_name}">
+			<span class="home__box__social-media__link__inner">${
+				icon +
+				(full_text ? `<span>${encodeHtml(full_text)}</span>` : '')
+			}</span>
+		</a>`;
+
+		if (full_text) {
+			links_fullwidth.push(html);
+		}
+		else {
+			links_small.push(html);
+		}
+	}
+
+	return `<div class="home__box__social-media">
+		${links_fullwidth.join(' ')}
+		${links_small.join('')}
+	</div>`;
 };
 
 /**
@@ -183,16 +229,7 @@ const buildPage = async() => {
 			<img class="home__box__logo" src="public/image/logo.webp" alt="Unheil Logo" fetchpriority="high">
 				<h1 class="home__box__heading">${encoded_site_name}</h1>
 				<p class="home__box__tagline">${encoded_description}</p>
-				<div class="home__box__social-media">
-					${
-						SOCIAL_MEDIA.reduce((total, {name, url, icon}) => {
-							const encoded_name = encodeHtml(name);
-							return total + `<a class="home__box__social-media__link" href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer" aria-label="${encoded_name}" title="${encoded_name}">
-								<span class="home__box__social-media__link__inner">${icon}</span>
-							</a>`
-						}, '')
-					}
-				</div>
+				${getSocialMediaLinksHtml()}
 			</div>
 		</header>
 		<section id="events" class="events">
