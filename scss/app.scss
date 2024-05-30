@@ -1,11 +1,13 @@
-@use 'fonts';
-@use 'animations';
-@use 'reset';
-@use 'generic';
-@use 'navigation';
-@use 'social-media-links';
-@use 'home-section';
-@use 'events-section';
-@use 'about-section';
-@use 'image-menu';
-@use 'footer';
+@use 'generic/fonts';
+@use 'generic/animations';
+@use 'generic/reset';
+@use 'generic/generic';
+
+@use 'layout/footer';
+@use 'layout/image-menu';
+@use 'layout/navigation';
+@use 'layout/social-media-links';
+
+@use 'sections/about-section';
+@use 'sections/events-section';
+@use 'sections/home-section';

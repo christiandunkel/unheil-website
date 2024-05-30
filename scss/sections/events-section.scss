@@ -1,5 +1,5 @@
 @use 'sass:math';
-@use 'globals';
+@use '../generic/globals';
 
 .events {
 	$max-width: 60rem;
