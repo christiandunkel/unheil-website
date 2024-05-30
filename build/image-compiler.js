@@ -26,10 +26,11 @@ const buildImages = async() => {
 	for (const {input_path, output_path, thumbnail_output_path} of await getData()) {
 		const {width, height} = await _.sharp(input_path).metadata();
 		for (const is_small of [true, false]) {
-			let output_width = is_small ? 360 : Math.min(width, 1920);
+			const min_size = 360;
+			let output_width = is_small ? min_size : Math.min(width, 1920);
 			let output_height = Math.floor(output_width * height / width);
-			if (output_height < 380) {
-				output_height = is_small ? 360 : Math.min(height, 1080);
+			if (output_height < min_size) {
+				output_height = is_small ? min_size : Math.min(height, 1080);
 				output_width = Math.floor(output_height * width / height);
 			}
 

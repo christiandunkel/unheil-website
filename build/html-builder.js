@@ -2,6 +2,7 @@
 
 const _ = {
 	events_reader: require('./events-reader.js'),
+	image_compiler: require('./image-compiler.js'),
 	html_minifier_terser: require('html-minifier-terser'),
 	fs: require('fs'),
 	path: require('path')
@@ -218,15 +219,24 @@ const buildPage = async() => {
 		</div>
 		<div id="about" class="about">
 			<h2 class="about__heading">about</h2>
-			<h2 class="about__description">Unheil is a black metal band made in Germany! We are made up of Chris, Kim, Maya, and TO. You can listen to our music online, or join us at our next events!</h2>
+			<h2 class="about__description">Unheil is a black metal band made in German. We are made up of Chris, Kim, Maya, and TO. Join us at our next events.</h2>
+			<div class="about__gallery">
+				${
+					(await _.image_compiler.getData()).reduce((total, {thumbnail_output_url, output_url}) => {
+						return total + `<button class="about__gallery__image" data-image-url="${output_url}" aria-label="Open image" title="Open image">
+							<span class="about__gallery__image__inner">
+								<img class="about__gallery__image__inner__img" src="${thumbnail_output_url}" />
+							</span>
+						</button>`;
+					}, '')
+				}
+			</div>
 		</div>
 		<script src="public/app.js?${cache_invalidator}" defer></script>
 	</body>
 </html>
 	
 	`;
-
-	console.log(  );
 
 	const public_path = _.path.join(__dirname, '..', 'index.html');
 	const minified_html = await minifyHtml(html);
