@@ -9,16 +9,17 @@
 	min-height: 100vh; padding: (globals.$navigation-height + 2.5rem) 2rem 2.5rem 2rem;
 
 	&__heading {
-		margin: 0 0 2rem 0;
+		margin: 0 0 1.5rem 0;
 		color: white; font-size: 7rem; line-height: 1.3; font-weight: bold;
 	}
 
 	&__image {
-		max-width: $max-width; margin: 3rem 0 2rem 0;
+		max-width: $max-width; margin-top: 1.5rem;
 		user-select: none; pointer-events: none;
 
 		&__img {
 			width: 100%;
+			border-radius: .4rem;
 		}
 	}
 
@@ -49,7 +50,7 @@
 				> * {
 					display: table-cell;
 					width: 50%;
-					padding-top: 2.5rem; padding-bottom: 2.5rem;
+					padding-top: 2.2rem; padding-bottom: 2.2rem;
 				}
 
 				&__info {
@@ -78,11 +79,7 @@
 				}
 
 				@media (max-width: 600px) {
-					font-size: 1.9rem;
-
-					> * {
-						padding-top: 2rem; padding-bottom: 2rem;
-					}
+					font-size: 2rem;
 				}
 			}
 		}

@@ -11,7 +11,12 @@
 		content: '';
 		position: absolute; top: 42%; left: 50%; z-index: 1;
 		max-width: 130%; width: 80rem; height: 65rem;
-		background-image: radial-gradient(at 50% 50%, rgba(170, 180, 240, .25), transparent 62%);
+		background-image: radial-gradient(
+			at 50% 50%,
+			rgba(170, 180, 240, 0.3),
+			rgba(170, 180, 240, 0.12) 33%,
+			transparent 62%
+		);
 		transform: translate(-50%,-50%);
 		animation: fade-in 1.6s;
 
