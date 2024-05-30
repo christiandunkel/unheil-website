@@ -140,6 +140,7 @@
 				for (const toggle_button of all_buttons) {
 					toggle_button.setAttribute('aria-expanded', 'true');
 				}
+				inner_element.scrollTop = 0;
 				close_button.focus();
 				opener_button = button;
 				is_open = true;
