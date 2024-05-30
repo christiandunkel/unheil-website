@@ -25,9 +25,11 @@ body.image-menu-is-open {
 		text-align: center;
 
 		&__image {
+			contain: content;
 			display: inline-block;
 			width: 100%;
-			pointer-events: auto;
+			border: 1px solid white; border-radius: .4rem;
+			overflow: hidden; pointer-events: auto;
 			user-select: none;
 
 			&__img {
