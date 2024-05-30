@@ -84,6 +84,10 @@ const getData = async() => {
 		}
 
 		const extension = _.path.extname(path);
+		if (extension === '.json') {
+			continue;
+		}
+
 		const valid_extensions = ['.jpg', '.jpeg', '.png', '.webp'];
 		if (!valid_extensions.includes(extension)) {
 			throw new Error(`Found image with unsupported extension at ${path}`);
@@ -98,11 +102,36 @@ const getData = async() => {
 			throw new Error(`Images must be at least ${MIN_SIZE}x${min_heiMIN_SIZEght}px. Found image sized ${width}x${height}px at ${path}`);
 		}
 
+		const data_file = `${path}.json`;
+		if (!_.fs.existsSync(data_file)) {
+			throw new Error(`Missing data file for image ${base_name} that should be located at ${data_file}`);
+		}
+
+		const meta_data = _.fs.readFileSync(data_file).toString();
+		let meta_json;
+		try {
+			meta_json = JSON.parse(meta_data);
+		}
+		catch (error) {
+			console.error(error);
+			throw new Error(`Failed to parse image meta data as JSON at ${data_file}`);
+		}
+
+		if (!(typeof meta_json === 'object' || !Array.isArray(meta_json))) {
+			throw new Error(`Meta data must be an object, but got ${typeof meta_json} instead at ${data_file}`);
+		}
+
+		const {alt_text} = meta_json;
+		if (typeof alt_text !== 'string') {
+			throw new Error(`Expected a key alt_text as string, but got ${typeof alt_text} at ${data_file}`);
+		}
+
 		const output_basename = _.path.basename(base_name, extension) +
 			// add the index of the extension to make sure that images like `abc.jpg` and `abc.webp` end up with separate output paths
 			`.${valid_extensions.indexOf(extension)}`;
 
 		images.push({
+			alt_text: alt_text,
 			width: width,
 			height: height,
 			input_path: path,

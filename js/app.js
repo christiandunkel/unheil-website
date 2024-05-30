@@ -77,7 +77,10 @@
 		let inner_element;
 		let image_container;
 		let image_element;
-		const loadImageIntoMenu = url => {
+		const loadImageIntoMenu = (
+			url,
+			alt_text
+		) => {
 			const image_hidden_class = 'image-menu__inner__image__img--hidden';
 			if (!inner_element) {
 				inner_element = document.createElement('div');
@@ -97,6 +100,7 @@
 			image_container.style.removeProperty('max-width');
 			image_element.classList.add(image_hidden_class);
 			image_element.src = url;
+			image_element.alt = alt_text;
 		};
 
 		const closeMenu = () => {
@@ -133,9 +137,13 @@
 			const button = buttons[i];
 			all_buttons.push(button);
 			let image_url;
+			let alt_text;
 			button.addEventListener('click', () => {
-				image_url ||= button.getAttribute(attribute);
-				loadImageIntoMenu(image_url);
+				if (!image_url) {
+					image_url = button.getAttribute(attribute);
+					alt_text = button.querySelector('.about__gallery__image__inner__img').alt;
+				}
+				loadImageIntoMenu(image_url, alt_text);
 				document.body.classList.add(menu_open_class);
 				for (const toggle_button of all_buttons) {
 					toggle_button.setAttribute('aria-expanded', 'true');

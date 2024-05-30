@@ -267,13 +267,13 @@ const buildPage = async() => {
 			</div>
 			<div class="about__gallery">
 				${
-					(await _.image_compiler.getData()).reduce((total, {thumbnail_output_url, output_url}) => {
-						return total + `<button class="about__gallery__image" data-open-image-menu="${output_url}" aria-label="Open image" title="Open image" aria-controls="image-menu" aria-expanded="false" aria-haspopup="dialog">
+					(await _.image_compiler.getData()).reduce((total, {alt_text, thumbnail_output_url, output_url}) =>
+						total + `<button class="about__gallery__image" data-open-image-menu="${output_url}" aria-label="Open image" title="Open image" aria-controls="image-menu" aria-expanded="false" aria-haspopup="dialog">
 							<span class="about__gallery__image__inner">
-								<img class="about__gallery__image__inner__img" src="${thumbnail_output_url}" />
+								<img class="about__gallery__image__inner__img" src="${thumbnail_output_url}" alt="${alt_text}" />
 							</span>
-						</button>`;
-					}, '')
+						</button>`,
+					'')
 				}
 			</div>
 		</section>
