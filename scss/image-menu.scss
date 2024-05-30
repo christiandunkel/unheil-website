@@ -25,15 +25,14 @@ body.image-menu-is-open {
 		text-align: center;
 
 		&__image {
-			contain: content;
 			display: inline-block;
 			width: 100%;
-			border: 1px solid white; border-radius: .4rem;
-			overflow: hidden; pointer-events: auto;
+			pointer-events: auto;
 			user-select: none;
 
 			&__img {
 				width: 100%;
+				border: 1px solid white; border-radius: .4rem;
 				pointer-events: none;
 
 				&--hidden {
