@@ -109,6 +109,7 @@ const buildPage = async() => {
 		<link rel="preload" href="public/font/roboto-mono-regular.woff2" as="font" type="font/woff2" crossorigin="">
 		<link rel="preload" href="public/font/roboto-mono-semi-bold.woff2" as="font" type="font/woff2" crossorigin="">
 		<link rel="stylesheet" href="public/app.css?${cache_invalidator}" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<link rel="canonical" href="${encoded_url}" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<meta name="robots" content="index, follow" />
