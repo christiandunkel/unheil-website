@@ -14,6 +14,7 @@ const DESCRIPTION = 'Atmospheric / Depressive Black Metal made in Germany'
 const DOMAIN = 'example.com';
 const SITE_NAME = 'Unheil';
 const LOCALE = 'en_US';
+const EMAIL = 'unheil666@gmx.de';
 
 const SOCIAL_MEDIA = [
 	{
@@ -140,13 +141,13 @@ const buildPage = async() => {
 	const encoded_description = encodeHtml(DESCRIPTION);
 	const encoded_url = `https://${encodeHtml(DOMAIN)}`;
 	const encoded_site_name = encodeHtml(SITE_NAME);
+	const encoded_email = encodeHtml(EMAIL);
 	const preview_image = `${encoded_url}/public/image/preview.webp`;
 	const preview_image_width = 1200;
 	const preview_image_height = 630;
 	const cache_invalidator = Math.floor(Math.random() * 10000000000).toString(36);
 
 	const html = `
-	
 <html lang="${LOCALE.split('_')[0]}" dir="ltr" prefix="og: https://ogp.me/ns#">
 	<head>
 		<meta charset="utf-8" />
@@ -260,11 +261,7 @@ const buildPage = async() => {
 		</section>
 		<section id="about" class="about">
 			<h2 class="about__heading">about</h2>
-			<p class="about__description">Unheil is a black metal band made in Germany. We are made up of Chris, Kim, Maya, and TO. Join us at our next events.</p>
-			<div class="about__links">
-				<a class="about__links__link" href="https://www.facebook.com/unheil/about_contact_and_basic_info" target="_blank" rel="noopener noreferrer">Contact</a>
-				<a class="about__links__link" href="https://docs.github.com/en/site-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
-			</div>
+			<p class="about__description">Unheil is a black metal band made in Germany. We are made up of Chris, Kim, Maya, and TO.</p>
 			<div class="about__gallery">
 				${
 					(await _.image_compiler.getData()).reduce((total, {alt_text, thumbnail_output_url, output_url}) =>
@@ -277,6 +274,9 @@ const buildPage = async() => {
 				}
 			</div>
 		</section>
+		<footer class="footer">
+			<p class="footer__text">This website is hosted on github pages. To find out what data Github collects, check out their <a class="footer__text__link" href="https://docs.github.com/en/site-policy">privacy policy</a>. If you want to get in contact, write an e-mail to <a class="footer__text__link" href="mailto:${encoded_email}">${encoded_email}</a>.</p>
+		</footer>
 		<div id="image-menu" class="image-menu" role="dialog" aria-modal="true">
 			<button class="image-menu__close-button" aria-label="Close" title="Close" aria-controls="image-menu" aria-expanded="false">
 				<!-- https://fontawesome.com/icons/xmark?f=classic&s=solid -->
@@ -285,9 +285,7 @@ const buildPage = async() => {
 		</div>
 		<script src="public/app.js?${cache_invalidator}" defer></script>
 	</body>
-</html>
-	
-	`;
+</html>`;
 
 	const public_path = _.path.join(__dirname, '..', 'index.html');
 	const minified_html = await minifyHtml(html);

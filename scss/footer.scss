@@ -1,0 +1,20 @@
+.footer {
+	max-width: 80rem; margin: 0 auto; padding: 0 1.5rem 4rem 1.5rem;
+	text-align: center;
+
+	&__text {
+		color: #919191; font-size: 1.7rem; line-height: 1.4;
+
+		&__link {
+			color: inherit; font-weight: bold;
+			text-decoration: underline;
+			text-underline-offset: .2em;
+			text-decoration-thickness: .1em;
+	
+			&:hover {
+				color: white;
+				text-decoration: none;
+			}
+		}
+	}
+}
