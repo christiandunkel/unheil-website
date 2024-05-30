@@ -24,13 +24,28 @@ const buildImages = async() => {
 	_.fs.mkdirSync(OUTPUT_DIRECTORY);
 
 	for (const {width, height, input_path, output_path, thumbnail_output_path} of await getData()) {
-		for (const is_small of [true, false]) {
+		for (const is_thumbnail of [true, false]) {
 			const min_size = 360;
-			let output_width = is_small ? min_size : Math.min(width, 1280);
-			let output_height = Math.floor(output_width * height / width);
-			if (output_height < min_size) {
-				output_height = is_small ? min_size : Math.min(height, 720);
-				output_width = Math.floor(output_height * width / height);
+			let output_width;
+			let output_height;
+
+			if (is_thumbnail) {
+				output_width = min_size;
+				output_height = Math.floor(output_width * height / width);
+				if (output_height < min_size) {
+					output_height = min_size;
+					output_width = Math.floor(output_height * width / height);
+				}
+			}
+			else {
+				if (width < height) {
+					output_height = Math.min(height, 720);
+					output_width = Math.floor(output_height * width / height);
+				}
+				else {
+					output_width = Math.min(width, 1280);
+					output_height = Math.floor(output_width * height / width);
+				}
 			}
 
 			try {
@@ -43,9 +58,9 @@ const buildImages = async() => {
 					.webp({
 						// https://sharp.pixelplumbing.com/api-output#webp
 						effort: 6,
-						quality: is_small ? 60 : 70
+						quality: is_thumbnail ? 76 : 72
 					})
-					.toFile(is_small ? thumbnail_output_path : output_path);
+					.toFile(is_thumbnail ? thumbnail_output_path : output_path);
 			}
 			catch (error) {
 				console.error(error);
