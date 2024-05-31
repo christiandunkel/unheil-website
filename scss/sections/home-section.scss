@@ -40,16 +40,15 @@
 		}
 
 		&__heading {
-			margin: -2.5rem 0 0 0;
-			color: white; font-size: 7rem; line-height: 1; font-weight: bold; text-transform: lowercase;
+			color: white; font-size: 6.5rem; line-height: 1; font-weight: bold; text-transform: lowercase;
 
-			@media (max-width: 450px) {
-				margin-top: 1rem;
+			@media (min-width: 451px) {
+				margin-top: -2.5rem;
 			}
 		}
 
 		&__tagline {
-			max-width: 50rem; margin: 2rem 0;
+			max-width: 50rem; margin: 1.4rem 0 2rem 0;
 			color: white; font-size: 2.2rem; line-height: 1.3; text-align: center; text-wrap: balance;
 		}
 	}
