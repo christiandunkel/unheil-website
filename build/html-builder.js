@@ -133,6 +133,35 @@ const getSocialMediaLinksHtml = () => {
 };
 
 /**
+ * gets the HTML code to display the current events
+ */
+const getEventsHtml = () => {
+	const data = _.events_reader.getData();
+	if (data.length === 0) {
+		return '<p class="events__none-defined-message">There are currently no events.</p>';
+	}
+
+	return `<div class="events__list">
+		<ol class="events__list__inner">
+			${
+				data.reduce((total, {date, end_time, name, place, url}) => {
+					const encoded_name = encodeHtml(name);
+					return total + `<li class="events__list__inner__event" data-event-end-time="${end_time}">
+						<span class="events__list__inner__event__info">${
+							encodeHtml(date) +
+							(place ? `<br /><span class="events__list__inner__event__info__place">${encodeHtml(place)}</span>` : '')
+						}</span>
+						<span class="events__list__inner__event__name">${
+							url ? `<a href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer">${encodeHtml(encoded_name)}</a>` : encoded_name
+						}</span>
+					</li>`
+				}, '')
+			}
+		</ol>
+	</div>`;
+};
+
+/**
  * generates a hash unique to the contents of a file
  */
 const getFileHash = file_path => {
@@ -248,24 +277,7 @@ const buildPage = async() => {
 		</header>
 		<section id="events" class="events">
 			<h2 class="events__heading">events</h2>
-			<div class="events__list">
-				<ol class="events__list__inner">
-					${
-						_.events_reader.getData().reduce((total, {date, end_time, name, place, url}) => {
-							const encoded_name = encodeHtml(name);
-							return total + `<li class="events__list__inner__event" data-event-end-time="${end_time}">
-								<span class="events__list__inner__event__info">${
-									encodeHtml(date) +
-									(place ? `<br /><span class="events__list__inner__event__info__place">${encodeHtml(place)}</span>` : '')
-								}</span>
-								<span class="events__list__inner__event__name">${
-									url ? `<a href="${encodeHtml(url)}" target="_blank" rel="noopener noreferrer">${encodeHtml(encoded_name)}</a>` : encoded_name
-								}</span>
-							</li>`
-						}, '')
-					}
-				</ol>
-			</div>
+			${getEventsHtml()}
 			<picture class="events__image">
 				<source srcset="public/image/band-small.webp" type="image/webp" media="(max-width: 500px)">
 				<img class="events__image__img" src="public/image/band-regular.webp" loading="lazy" />

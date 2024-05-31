@@ -23,6 +23,11 @@
 		}
 	}
 
+	&__none-defined-message {
+		margin-bottom: 3rem;
+		color: white; font-size: 2rem; line-height: 1.3;
+	}
+
 	&__list {
 		max-width: $max-width; width: 100%;
 		overflow-x: auto;
