@@ -33,10 +33,8 @@
 			border-collapse: collapse;
 
 			&__event {
-				$inner-margin: 2.4rem;
-
 				display: table-row;
-				border-bottom: 2px solid rgba(255, 255, 255, .5);
+				border-bottom: 1px solid rgba(255, 255, 255, .3);
 				color: white; font-size: 2.2rem; line-height: 1.3;
 
 				&--is-over {
@@ -49,21 +47,20 @@
 
 				> * {
 					display: table-cell;
-					width: 50%;
-					padding-top: 2.2rem; padding-bottom: 2.2rem;
+					padding-top: 2rem; padding-bottom: 2rem;
 				}
 
 				&__info {
-					padding-left: .4rem; padding-right: math.div($inner-margin, 2);
+					padding-left: .4rem; padding-right: 2.2rem;
 
 					&__place {
-						color: rgba(255, 255, 255, .65);
+						color: rgba(255, 255, 255, .65); font-size: .9em;
 					}
 				}
 
 				&__name {
-					padding-left: math.div($inner-margin, 2); padding-right: .4rem;
-					color: white; font-weight: bold;
+					width: 100%; padding-right: .4rem;
+					color: white; font-weight: bold; text-align: right;
 					
 					> a {
 						// overwrite link colors
