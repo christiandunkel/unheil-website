@@ -201,7 +201,9 @@ const buildPage = async() => {
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<link rel="canonical" href="${encoded_url}" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-		<meta name="robots" content="index, follow" />
+
+		<!-- disable indexing by search machines, but would need to be enabled on the actual website -->
+		<meta name="robots" content="noindex, nofollow" />
 		<meta name="description" content="${encoded_description}" />
 		<meta property="og:description" content="${encoded_description}" />
 		<meta name="keywords" content="unheil,germany,band,music,atmospheric metal,black metal,depressive black metal" />
